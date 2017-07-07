@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head.ejs %>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <ul>
+      <% movies.map(movie => {%>
+          <li><%= movie.title%></li>
+          <img src="/images/<%= movie.poster %>" alt="img-responsive">
+      <%});%>
+    </ul>
+    <% include partials/scripts.ejs %>
+  </body>
+</html>
