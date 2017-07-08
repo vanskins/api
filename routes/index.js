@@ -3,10 +3,15 @@ var moviesJSON = require('../movies.json');
 
 exports.home = function(req, res){
   var movies = moviesJSON.movies;
-  res.render('home', {
-    title: "Star wars moviesz",
-    movies : movies,
-  });
+  // res.render('home', {
+  //   title: "Star wars moviesz",
+  //   movies : movies,
+  // });
+  // movies.map(movie => {
+  // 	console.log(movie.title);
+  // });
+  res.header("Access-Control-Allow-Origin", "*");
+    res.json(movies);
 };
 //movie_single
 exports.movie_single = function(req, res){

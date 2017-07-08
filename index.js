@@ -16,6 +16,6 @@ app.get('/star_wars_episode/:episode_number?', routes.movie_single);
 //notFound
 app.get('*', routes.notFound);
 
-app.listen(3000, function(){
+app.listen(5000, function(){
   console.log('server is running brah.....');
 });
