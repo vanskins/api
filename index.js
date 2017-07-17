@@ -1,21 +1,16 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const routes = require('./routes/api');
+const mongoose = require('mongoose');
 
-app.set('view engine', 'ejs');
-var routes = require('./routes');
-var path = require('path');
-app.use(express.static(path.join(__dirname, 'public')));
-// import routes from './routes';
-//routes
+mongoose.connect('mongodb://localhost/ninjago');
+mongoose.Promise = global.Promise;
 
-//home
-app.get('/', routes.home);
-//movie_single
-app.get('/star_wars_episode/:episode_number?', routes.movie_single);
+app.use(bodyParser.json());
 
-//notFound
-app.get('*', routes.notFound);
+app.use('/api',routes);
 
-app.listen(5000, function(){
+app.listen(process.env.port || 5000, function(){
   console.log('server is running brah.....');
 });
